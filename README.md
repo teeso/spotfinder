@@ -99,7 +99,7 @@ The system is hosted on a server. The system consists of three components:
 
 We have two parts in the system. 
 
-- **Sever**
+**Sever**
 
     +- SpotFinder
     |  +- Server
@@ -110,7 +110,8 @@ We have two parts in the system.
     |  +  +
     +
 
-- **Node Station**
+
+**Node Station**
 
     +- SpotFinder
     |  +- Station
@@ -119,6 +120,7 @@ We have two parts in the system.
     |  |  +- Analyze
     |  +  
     +
+
 
 ## Setup 
 
