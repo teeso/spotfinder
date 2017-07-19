@@ -27,7 +27,7 @@ The idea here is to develop a sensor that calculates the number of available spo
 
 The idea behind this overall experiment is to build a network of interactive internet-connected sensors that collect real-time data about the city’s parkings, to tell citizens where to park by calculating the number of available spots and the estimated arrival time. The solution doesn't require installing any app, you just need to interact with this system through Facebook Massenger or Telegram, and the bot will answer you with a parking address and the probability of finding the place empty.
 
-![ScreenShot](/docs/prototype/concept.jpg)
+![](/docs/prototype/concept.jpg)
 
 # Solution: SpotFinder 
 
@@ -54,7 +54,7 @@ In order to experiment this idea, I used Raspberry Pi and a camera (or you can u
 - A usb hub with an external power supply
 - WiFi Dongle
 
-![ScreenShot](/docs/prototype/parking_sensor_0.jpg)
+![](/docs/prototype/parking_sensor_0.jpg)
 
 In case you need to set up the Raspberry Pi, which takes less than an hour, follow the [quick start guide](https://www.raspberrypi.org/help/videos/) from the raspberrypi.org site. Adding Wi-Fi connectivity is accomplished by attaching the Wi-Fi dongle and following [the setup guide found on the Raspberry Pi HQ Projects page](http://raspberrypihq.com/how-to-add-wifi-to-the-raspberry-pi/).
 
@@ -62,11 +62,11 @@ I have re-used mounting system for mobile device in order to attach the sensor t
 
 
 - **Prototype of the Sensor**
-![ScreenShot](/docs/prototype/parking_sensor_1.jpg)
-![ScreenShot](/docs/prototype/parking_sensor_2.jpg)
+![](/docs/prototype/parking_sensor_1.jpg)
+![](/docs/prototype/parking_sensor_2.jpg)
 
 - **Sensor in parking lot, attached to light-post**
-![ScreenShot](/docs/prototype/parking_sensor_3.jpg)
+![](/docs/prototype/parking_sensor_3.jpg)
 
 Note: If you want to work on fancy case, you can model that and 3D-print it. I don't have access to 3D-printer myself.
 
@@ -74,9 +74,9 @@ Note: If you want to work on fancy case, you can model that and 3D-print it. I d
 Then, we use the sensor to collect data periodically. We use object to detection algorithm on-device to make the solution Private by Design. We don't need to host images in our server, we count the number of cars and send data to the server.
 
 
-## Server
+## The system's components
 
-The system is hosted on a server. The system consists of three components: 
+The system consists of three main components: 
 
 1. Data collection component 
 
@@ -160,7 +160,7 @@ tf_obj_detector = TFObjDetector(model_name= 'ssd_mobilenet_v1_coco_11_06_2017')
 tf_obj_detector.detect_obj(<link_to_image>, viz= True)
 ```
 
-![ScreenShot](/docs/results/tensorflow_object_detection_api_vehicle_detection.png)
+![](/docs/results/tensorflow_object_detection_api_vehicle_detection.png)
 
 
 **Tests**
@@ -321,8 +321,8 @@ For more information you can check [this link](https://developers.facebook.com/d
 
 The end result of using chatbot on Facebook 
 
-![ScreenShot](/docs/results/spotFinder_fb_bot_1.png)
-![ScreenShot](/docs/results/spotFinder_fb_bot_2.png)
+![](/docs/results/spotFinder_fb_bot_1.png)
+![](/docs/results/spotFinder_fb_bot_2.png)
 
 ##### Twitter 
 
