@@ -27,7 +27,7 @@ The idea here is to develop a sensor that calculates the number of available spo
 
 The idea behind this overall experiment is to build a network of interactive internet-connected sensors that collect real-time data about the city’s parkings, to tell citizens where to park by calculating the number of available spots and the estimated arrival time. The solution doesn't require installing any app, you just need to interact with this system through Facebook Massenger or Telegram, and the bot will answer you with a parking address and the probability of finding the place empty.
 
-![](/docs/prototype/architechture.png)
+![](/docs/prototype/concept.png)
 
 # Solution: SpotFinder 
 
@@ -93,6 +93,9 @@ The system consists of three main components:
 3. Data interaction component
 
     3.1. Designing and integrating chatbot in social platforms (Facebook Messenger, Telegram, .. etc)
+
+
+![](/docs/prototype/architechture.jpg)
 
 
 ## Code Structure
