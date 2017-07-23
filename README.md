@@ -241,8 +241,7 @@ You can run this command to train the model
 ```bash
 python -m rasa_nlu.train -c config_spacy.json
 ```
-
--- Running Server
+- **Running Server**
 
 ```bash
 python -m rasa_nlu.server -c config_spacy.json --server_model_dir=model_20170717-215842
@@ -326,20 +325,6 @@ The end result of using chatbot on Facebook
 
 ![](/docs/results/spotFinder_fb_bot.png)
 
-##### Twitter 
-
-In this part, we are going to build a twitter bot that can find, and collect tweets of people looking for places to park.
-Twitter is appealing as a data source because its short snippets provide useful insight, and simplifies the process as they have great API. In our project, we will use [Tweepy]("http://www.tweepy.org/") python wrapper that taps into both the streaming and RESTful Twitter APIs.
-
-- You need to create a twitter profile and link it to a developer account, which you can create at [Twitter Developer Platform]("http://dev.twitter.com/"). You need to add a phone number and confirm the registration. When you create your account make sure to change the app’s permissions to “Read, Write, and Access Direct Messages”.
-
-- Get your consumer and secret keys
-
-- Capture and detect mentions from Twitter. We track tweets mentioning the bot on twitter @Our_SENSOR_Twitter_UserName. 
-
-- Extract spatial information from a tweet, if geo information is not included, we generate a question asking the user to provide his actual location. After selecting the best place to park, we tweet back to the same person, giving him information about the available parking spot “Would you please share your actual location or enable the location service?”
-
-- Once the location is identified, we select the closest parking space depending on the content of those tweets.
 
 
 
