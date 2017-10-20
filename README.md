@@ -1,5 +1,3 @@
-![Dev](https://img.shields.io/badge/status-developement-green.svg?style=developement)
-
 # Spot: A chatbbot that helps people find a parking spot in cities.
 
 Spot is a chatbbot that helps people find a parking spot easily. The system is powered by a network of modular IoT sensor nodes (that can be placed on streetlight poles). Each IoT node consists of a Raspberry-Pi and a camera to capture, and detect free parking spots. It runs on-device with respect to people's privacy.
