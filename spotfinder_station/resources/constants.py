@@ -1,0 +1,13 @@
+LATITUDE = 'latitude'
+LONGITUDE = 'longitude'
+CAMERA_PATH = "camera/"
+S3 = 's3'
+NODE_ID = "node_id"
+LOCATION = "location"
+TIME = "time"
+IMAGE = "image"
+IMAGE_EXT = "image_"
+TF_OBJ_DETECTOR = 'ssd_mobilenet_v1_coco_11_06_2017'
+NBR_CARS = "nbr_cars"
+AVAILABLE_SPOTS = "nbr_spots"
+COORDINATES = "coordinates"

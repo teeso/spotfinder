@@ -1,0 +1,347 @@
+{
+  "rasa_nlu_data": {
+    "regex_features": [
+      {
+        "name": "zipcode",
+        "pattern": "[0-9]{5}"
+      } 
+
+    ], "entity_synonyms": [
+      {
+        "value": "Parking Spot",
+        "synonyms": ["parking", "parking place", "parking spot", "spot"]
+      },
+      {
+        "value": "in",
+        "synonyms": ["in", "IN"]
+      }
+
+    ],
+    
+    "common_examples": [
+      {
+        "text": "hello", 
+        "intent": "greet", 
+        "entities": []
+      }, 
+      {
+        "text": "hi", 
+        "intent": "greet", 
+        "entities": []
+      },
+      {
+        "text": "salem", 
+        "intent": "greet", 
+        "entities": []
+      },
+      {
+        "text": "salam", 
+        "intent": "greet", 
+        "entities": []
+      },
+      {
+        "text": "salam ailikoum", 
+        "intent": "greet", 
+        "entities": []
+      }, 
+      {
+        "text": "howdy", 
+        "intent": "greet", 
+        "entities": []
+      }, 
+      {
+        "text": "hey there",
+        "intent": "greet", 
+        "entities": []
+      },
+      {
+        "text": "good morning",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "good evening",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "yes", 
+        "intent": "affirm", 
+        "entities": []
+      }, 
+      {
+        "text": "yup", 
+        "intent": "affirm", 
+        "entities": []
+      }, 
+      {
+        "text": "yeah", 
+        "intent": "affirm", 
+        "entities": []
+      },
+      {
+        "text": "indeed",
+        "intent": "affirm",
+        "entities": []
+      },
+      {
+        "text": "ok",
+        "intent": "affirm",
+        "entities": []
+      },
+      {
+        "text": "great",
+        "intent": "affirm",
+        "entities": []
+      },
+      {
+        "text": "right, thank you",
+        "intent": "affirm",
+        "entities": []
+      },
+      {
+        "text": "correct",
+        "intent": "affirm",
+        "entities": []
+      },
+      {
+        "text": "great choice",
+        "intent": "affirm",
+        "entities": []
+      },
+      {
+        "text": "sounds really good",
+        "intent": "affirm",
+        "entities": []
+      },
+      {
+        "text": "where can I park in Khalifa street ?",
+        "intent": "parking_search",
+        "entities": [
+          {
+            "start": 20,
+            "end": 34,
+            "value": "Khalifa street",
+            "entity": "location"
+          }
+        ]
+      },
+
+      {
+        "text": "where can I park in Khalifa street?",
+        "intent": "parking_search",
+        "entities": [
+          {
+            "start": 20,
+            "end": 34,
+            "value": "Khalifa street",
+            "entity": "location"
+          }
+        ]
+      },{
+        "text": "where can I park in Khalifa street",
+        "intent": "parking_search",
+        "entities": [
+          {
+            "start": 20,
+            "end": 34,
+            "value": "Khalifa street",
+            "entity": "location"
+          }
+        ]
+      },
+       {
+        "text": "where can I park in Alpena street",
+        "intent": "parking_search",
+        "entities": [
+          {
+            "start": 20,
+            "end": 33,
+            "value": "Alpena street",
+            "entity": "location"
+          }
+        ]
+      }
+      ,
+       {
+        "text": "where can I park in city center",
+        "intent": "parking_search",
+        "entities": [
+          {
+            "start": 20,
+            "end": 31,
+            "value": "city center",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "where can I park near to Alpena street",
+        "intent": "parking_search",
+        "entities": [
+          {
+            "start": 17,
+            "end": 24,
+            "value": "near to",
+            "entity": "spatial_relation"
+          },
+          {
+            "start": 25,
+            "end": 38,
+            "value": "Alpena street",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "where can I park near to Gate Mall",
+        "intent": "parking_search",
+        "entities": [
+          {
+            "start": 17,
+            "end": 24,
+            "value": "near to",
+            "entity": "spatial_relation"
+          },
+          {
+            "start": 25,
+            "end": 34,
+            "value": "Gate Mall",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "where shall I park in city center",
+        "intent": "parking_search",
+        "entities": [
+          {
+            "start": 19,
+            "end": 21,
+            "value": "in",
+            "entity": "spatial_relation"
+          }, { "start": 22,
+            "end": 33,
+            "value": "city center",
+            "entity": "location"}
+
+        ]
+      },
+
+      {
+        "text": "I am looking for a parking spot in khalifa street",
+        "intent": "parking_search",
+        "entities": [
+          {
+            "start": 35,
+            "end": 42,
+            "value": "khalifa",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "I am looking for a parking spot in khalifa",
+        "intent": "parking_search",
+        "entities": [
+          {
+            "start": 35,
+            "end": 42,
+            "value": "khalifa",
+            "entity": "location"
+          }
+        ]
+      },
+
+      {
+        "text": "i'm looking for a place to park",
+        "intent": "parking_search",
+        "entities": []
+      },
+      {
+        "text": "I want to park",
+        "intent": "parking_search",
+        "entities": []
+      },
+      {
+        "text": "I am searching for a parking spot",
+        "intent": "parking_search",
+        "entities": []
+      },
+      {
+        "text": "i'm looking for a parking place in city center",
+        "intent": "parking_search",
+        "entities": [
+          {
+            "start": 35,
+            "end": 46,
+            "value": "city center",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "show me an empty parking spot",
+        "intent": "parking_search",
+        "entities": []
+      },
+      {
+        "text": "show me a empty parking place in the centre", 
+        "intent": "parking_search", 
+        "entities": [
+          {
+            "start": 31, 
+            "end": 37, 
+            "value": "centre", 
+            "entity": "location"
+          }
+        ]
+      },     {
+        "text": "search for parking spots",
+        "intent": "parking_search",
+        "entities": []
+      },
+     
+      {
+        "text": "bye", 
+        "intent": "goodbye", 
+        "entities": []
+      }, 
+      {
+        "text": "goodbye", 
+        "intent": "goodbye", 
+        "entities": []
+      }, 
+      {
+        "text": "good bye", 
+        "intent": "goodbye", 
+        "entities": []
+      }, 
+      {
+        "text": "stop", 
+        "intent": "goodbye", 
+        "entities": []
+      }, 
+      {
+        "text": "end", 
+        "intent": "goodbye", 
+        "entities": []
+      },
+      {
+        "text": "farewell",
+        "intent": "goodbye",
+        "entities": []
+      },
+      {
+        "text": "Bye bye",
+        "intent": "goodbye",
+        "entities": []
+      },
+      {
+        "text": "have a good one",
+        "intent": "goodbye",
+        "entities": []
+      }
+    ]
+  }
+}
