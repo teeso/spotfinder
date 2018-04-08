@@ -52,19 +52,21 @@ In order to experiment this idea, I used Raspberry Pi and a camera (or you can u
 - WiFi Dongle
 
 ![](/docs/prototype/parking_sensor_0.jpg)
+**Figure 1** Electronic Componenets of the Sensor
 
 In case you need to set up the Raspberry Pi, which takes less than an hour, follow the [quick start guide](https://www.raspberrypi.org/help/videos/) from the raspberrypi.org site. Adding Wi-Fi connectivity is accomplished by attaching the Wi-Fi dongle and following [the setup guide found on the Raspberry Pi HQ Projects page](http://raspberrypihq.com/how-to-add-wifi-to-the-raspberry-pi/).
 
 I have re-used mounting system for mobile device in order to attach the sensor to the light pole. The sensor is mounted inside Raspberry Pi Camera Case. You can use any box, I used weather proof box for fast prototyping. The reason why I am showing that is to highlight the fact that you don't need fancy things to prototype an idea, You need a powerful device like Raspberry PI, and un-used things laying in your garage.
 
 
-- **Prototype of the Sensor**
 ![](/docs/prototype/parking_sensor_1.jpg)
 ![](/docs/prototype/parking_sensor_2.jpg)
 
-- **Sensor in parking lot, attached to light-post**
+**Figure 2** Prototype of the Sensor 
+
 ![](/docs/prototype/parking_sensor_3.jpg)
 
+**Figure 3** Sensor in parking lot, attached to light-post
 Note: If you want to work on fancy case, you can model that and 3D-print it. I don't have access to 3D-printer myself.
 
 
@@ -76,80 +78,49 @@ Then, we use the sensor to collect data periodically. We use object to detection
 The system consists of three main components: 
 
 1. Data collection component 
-
     1.1. Collect data from sensors periodically.
-    
+
 2. Data analysis component
-
     2.1. Question understanding and place identification. 
-    
     2.2. Spatial indexing.
-    
     2.3. Pedictive component to calculate the probability of finding parking spot after time T.
-    
-3. Data interaction component
 
+3. Data interaction component
     3.1. Designing and integrating chatbot in social platforms (Facebook Messenger, Telegram, .. etc)
 
 
 ![](/docs/prototype/architechture.png)
 
-
 ## Code Structure
 
-We have two parts in the system. 
-
-**Sever**
+In this project, we have two parts: (1) SpotFinder (Server) (2) SpotFinder (Station)
 
     +- SpotFinder
     |  +- Server
-    |  |  +- DB 
     |  |  +- Analysis
     |  |  |  +- NLU (Natural Language Understanding)
     |  |  |  +- Spot Detection
-    |  +  +
     +
-
-
-**Node Station**
-
-    +- SpotFinder
     |  +- Station
     |  |  +- Monitor
     |  |  +- Sync
     |  |  +- Analyze
-    |  +  
-    +
 
-
-## Setup 
-
-### Sensor
-
+## Sensor Configutation 
 - SSH to a connected Raspberry Pi
-
-- Install the required packages
-```sh
-ssh install/install.sh 
-```
-
-- Open new screen, so you can keep the script running on the background. 
-```sh
-Screen -S SpotFinder
-```
-
+- Install the required packages `sh install/install.sh`
+- Open new screen, so you can keep the script running on the background `Screen -S SpotFinder` 
 - Set up a virtual environment
 ```sh
-virtualenv venv
+virtualenv venv 
 source venv/bin/activate
 ```
+- Install the required modules using the requirements.txt. `pip install -r requirements.txt`
 
-- Install the required modules using the requirements.txt. 
-```sh
-pip install -r requirements.txt
-```
 
-#### Object detection: Vehicle Counter
+###  Functionalities: 
+
+- Object detection: Vehicle Counter
 
 At the beginning of the experiment, I tried to use Fast-RCNN, which was initially described in an [arXiv tech report](http://arxiv.org/abs/1506.01497) and was subsequently published in NIPS 2015. The solution was very slow on-device, but it gave good performance on the server. However, I had to capture images using the server, host it on AWS, then apply Fast-RCNN to count the number of vehicles. The solution was not great as it doesn't prioritize people's privacy.
 
@@ -161,7 +132,7 @@ tf_obj_detector.detect_obj(<link_to_image>, viz= True)
 ```
 
 ![](/docs/results/tensorflow_object_detection_api_vehicle_detection.png)
-
+**Figure 3:** Number of Vehicles detected by the model
 
 **Tests**
 
@@ -170,41 +141,20 @@ python -m src.tests.test_obj_detection
 ```
 
 
-### Server 
+## Server Configutation 
 
 In our server, we run three main componenets in a harmony.
 
-#### Natural Language Understanding
+###  Functionalities: 
+
+**(1) Natural Language Understanding**
 
 Rasa NLU (Natural Language Understanding) is a tool for intent classification and entity extraction.
 
-- **Install rasa NLU**
+- Install RASA NLU `pip install rasa_nlu`
+- Rasa NLU rely mainly on MITIE, spaCy or sklearn
 
-- Install rasa_nlu via PIP
-
-```sh
-pip install rasa_nlu
-```
-
-- If you want to use the bleeding edge version use github + setup.py:
-
-```sh
-git clone git@github.com:RasaHQ/rasa_nlu.git
-cd rasa_nlu
-pip install -r requirements.txt
-python setup.py install
-```
-- **Setting up RASA NLU Backend**
-
-rasa NLU rely mainly on MITIE, spaCy or sklearn
-
-- **MITIE**
-
-The `MITIE <https://github.com/mit-nlp/MITIE>`_ backend is all-inclusive. You can install it via github repo.
-
-```sh
-pip install git+https://github.com/mit-nlp/MITIE.git.
-```
+The `MITIE <https://github.com/mit-nlp/MITIE>`_ backend is all-inclusive. You can install it via github repo `pip install git+https://github.com/mit-nlp/MITIE.git.`
 
 We need to download the `MITIE models <https://github.com/mit-nlp/MITIE/releases/download/v0.4/MITIE-models-v0.2.tar.bz2>`_ . The file we need is ``total_word_feature_extractor.dat``
 
@@ -216,14 +166,9 @@ python -m spacy download en
 pip install numpy scipy scikit-learn
 ```
 
-- **Training**
+- Train the model
 
-- **Training data**
-
-First, we prepare the training data `parking_rasa.json`. I have put down some example to train the model (for testing purposes). This might crowd-source a lot of examples if we want to take the solution to the next stage.
-
-
-Then, We edit `config_spacy.json`, this later hold information on model path and training data.
+First, we prepare the training data `parking_rasa.json`. I have put down some examples to train the model (for testing purposes). We need to generate a lot of examples in the next version. Then, we edit `config_spacy.json`, this later hold information on model path and training data.
 
 ```js
 {
@@ -233,18 +178,17 @@ Then, We edit `config_spacy.json`, this later hold information on model path and
 }
 ```
 
-You can run this command to train the model 
-
+Start training:
 ```bash
 python -m rasa_nlu.train -c config_spacy.json
 ```
-- **Running Server**
+- Run it on another screen
 
 ```bash
 python -m rasa_nlu.server -c config_spacy.json --server_model_dir=model_20170717-215842
 ```
 
-At this step, our server is up and running. We can try to run an example. 
+- Test it
 
 ```bash
 curl -XPOST localhost:5000/parse -d '{"q":"I am looking for a parking spot in khalifa street?"}' | python -mjson.tool
@@ -296,33 +240,13 @@ The obtained result will look like:
 Generally speaking, you can see that we are trying to do two things here: (1) identify and classify the user's intention. (2) look for attributes of such queries (a location, a date, etc.). 
 
 
-#### Conversational Channels 
+- Put the model behind one of the Conversational platforms 
 
-In this section, we would highlight how to use the same solution to integrate it in different platforms `Twitter` & `Facebook Messenger`. 
-
-
-##### Facebook Messenger  
-
-In this part, we will see how to configure and build a bot for Messenger.
-
-- Create a new Facebook Page for your Bot https://www.facebook.com/pages/create
-- Create a new Facebook App for your Bot https://developers.facebook.com/quickstarts/?platform=web
-- Go to your app and to the messengers tab on the sidebar
-- Generate a token for your page
-
-- Deploy your app, you need a https url. You use [ngrok](https://ngrok.com/download) if you are running it locally.
-- Click 'Setup Webhooks' back in the Facebook Developers page (still in the Messenger tab), and the Callback URL should be YOUR_URL + '/webhook'
-- Your Verify Token is the string you are saving in the configuration files.
-- At least check 'messages' in Subscription Field
-- Verify and Save
-
-For more information you can check [this link](https://developers.facebook.com/docs/messenger-platform/quickstart)
-
-The end result of using chatbot on Facebook 
+The working version of the bot can be seen in the following screen shot.
 
 ![](/docs/results/spotFinder_fb_bot.png)
 
-
+**Figure 4:** Screen shot of conversational chatbot
 
 
 ## Support
