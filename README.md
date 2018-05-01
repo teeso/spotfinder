@@ -174,14 +174,6 @@ pip install numpy scipy scikit-learn
 
 First, we prepare the training data `parking_rasa.json`. I have put down some examples to train the model (for testing purposes). We need to generate a lot of examples in the next version. Then, we edit `config_spacy.json`, this later hold information on model path and training data.
 
-```js
-{
-  "pipeline": "spacy_sklearn",
-  "path" : "./models",
-  "data" : "./data/parking_rasa.json"
-}
-```
-
 Start training:
 ```bash
 python -m rasa_nlu.train -c config_spacy.json
